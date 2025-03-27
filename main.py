@@ -125,3 +125,19 @@ VALUES ('Miles Davis Essentials', '2017-07-12');
 INSERT INTO compilation (title, release_date)
 VALUES ('David Bowie Greatest Hits', '2019-09-20');
 
+CREATE TABLE IF NOT EXISTS musician_genre (
+    musician_id INTEGER REFERENCES musician(id),
+    genre_id INTEGER REFERENCES genre(id)
+);
+
+INSERT INTO musician_genre (musician_id, genre_id)
+VALUES (1, 1);
+
+INSERT INTO musician_genre (musician_id, genre_id)
+VALUES (2, 1);
+
+INSERT INTO musician_genre (musician_id, genre_id)
+VALUES (3, 3);
+
+INSERT INTO musician_genre (musician_id, genre_id)
+VALUES (4, 2); 

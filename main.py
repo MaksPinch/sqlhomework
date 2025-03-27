@@ -5,7 +5,9 @@ CREATE TABLE IF NOT EXISTS musician (
     fullname VARCHAR(100) NOT NULL,
     nickname VARCHAR(100) UNIQUE NOT NULL
 );
-# задание 1
+
+-- задание 1
+
 INSERT INTO musician (fullname, nickname)
 VALUES ('Aubrey Drake Graham', 'Drake');
 
@@ -203,7 +205,7 @@ VALUES (4, 17);
 INSERT INTO compilation_track (compilation_id, musictrack_id)
 VALUES (4, 18);
 
-# задание 2
+-- задание 2
 
 SELECT title, duration FROM musictrack
 WHERE duration = (SELECT MAX(duration) FROM musictrack);
@@ -217,13 +219,17 @@ WHERE release_date BETWEEN '2018-01-01' AND '2020-12-31';
 SELECT fullname FROM musician
 WHERE fullname NOT LIKE '% %';
 
-SELECT title FROM musictrack
+SELECT title
+FROM musictrack
 WHERE title ILIKE 'my%'
-OR title ILIKE '%my'
 OR title ILIKE '%my%'
 OR title ILIKE 'my'
+OR title ILIKE 'мой%'
+OR title ILIKE '%мой'
+OR title ILIKE '%мой%'
+OR title ILIKE 'мой';
 
-# задание 3
+-- задание 3
 
 SELECT g.title, COUNT(mg.musician_id) FROM genre g
 JOIN musician_genre mg ON g.id = mg.genre_id

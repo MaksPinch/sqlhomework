@@ -249,7 +249,7 @@ GROUP BY a.title;
 SELECT fullname
 FROM musician
 WHERE id NOT IN (
-    SELECT fullname as name
+    SELECT fullname AS name
     FROM musician m
     JOIN album_musician am ON m.id = am.musician_id
     JOIN album a ON am.album_id = a.id

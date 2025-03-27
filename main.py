@@ -56,58 +56,59 @@ CREATE TABLE IF NOT EXISTS musictrack (
 );
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('God\'s Plan', 198, 1);
+VALUES ('God\'s Plan', 3.30, 1);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('In My Feelings', 237, 1);
+VALUES ('In My Feelings', 3.95, 1);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Nonstop', 192, 1);
+VALUES ('Nonstop', 3.20, 1);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Nice for What', 219, 1);
+VALUES ('Nice for What', 3.65, 1);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Mob Ties', 193, 1);
+VALUES ('Mob Ties', 3.22, 1);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('I\'m Upset', 199, 1);
+VALUES ('I\'m Upset', 3.32, 1);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Baby Pluto', 174, 2);
+VALUES ('Baby Pluto', 2.90, 2);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Silly Watch', 173, 2);
+VALUES ('Silly Watch', 2.88, 2);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Lo Mein', 173, 2);
+VALUES ('Lo Mein', 2.88, 2);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('That Way', 170, 2);
+VALUES ('That Way', 2.83, 2);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('P2', 197, 2);
+VALUES ('P2', 3.28, 2);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('You Better Move', 183, 2);
+VALUES ('You Better Move', 3.05, 2);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Blackstar', 480, 3);
+VALUES ('Blackstar', 8.00, 3);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Lazarus', 287, 3);
+VALUES ('Lazarus', 4.78, 3);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Sue (Or in a Season of Crime)', 289, 3);
+VALUES ('Sue (Or in a Season of Crime)', 4.82, 3);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Girl Loves Me', 212, 3);
+VALUES ('Girl Loves Me', 3.53, 3);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Dollar Days', 208, 3);
+VALUES ('Dollar Days', 3.47, 3);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('I Can\'t Give Everything Away', 251, 3);
+VALUES ('I Can\'t Give Everything Away', 4.18, 3);
+
 
 
 CREATE TABLE IF NOT EXISTS compilation (

@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS musician (
     fullname VARCHAR(40) NOT NULL,
     nickname VARCHAR(40) UNIQUE NOT NULL
 );
-
+# задание 1
 INSERT INTO musician (fullname, nickname)
 VALUES ('Aubrey Drake Graham', 'Drake');
 
@@ -200,6 +200,7 @@ VALUES (4, 17);
 INSERT INTO compilation_track (compilation_id, musictrack_id)
 VALUES (4, 18);
 
+# задание 2
 
 SELECT title, duration FROM musictrack
 where duration = (SELECT MAX(duration) FROM musictrack);
@@ -215,3 +216,21 @@ WHERE fullname NOT LIKE '% %';
 
 SELECT title FROM musictrack
 WHERE title LIKE 'мой' OR title LIKE'my';
+
+# задание 3
+
+SELECT g.title, COUNT(mg.musician_id) FROM genre g
+JOIN musician_genre mg ON g.id = mg.genre_id
+GROUP BY g.title;
+
+SELECT a.title AS name_of_the_album, a.release_date, COUNT(m.title) AS number_of_tracks
+FROM album a
+JOIN musictrack m ON a.id = m.album_id
+WHERE a.release_date BETWEEN '2019-01-01' AND '2022-12-31'
+GROUP BY a.title, a.release_date;
+
+
+SELECT a.title AS name_of_the_album, AVG(m.duration) AS average_duration FROM album a
+JOIN musictrack m ON a.id = m.album_id
+GROUP BY a.title;
+

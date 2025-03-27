@@ -11,10 +11,10 @@ INSERT INTO musician (fullname, nickname)
 VALUES ('Symere Woods', 'Lil Uzi Vert');
 
 INSERT INTO musician (fullname, nickname)
-VALUES ('Tyler Okonma', 'Tyler, The Creator');
+VALUES ('Miles Dewey Davis III', 'Miles Davis');
 
 INSERT INTO musician (fullname, nickname)
-VALUES ('Jacques Webster II', 'Travis Scott');
+VALUES ('David Robert Jones', 'David Bowie');
 
 
 CREATE TABLE IF NOT EXISTS genre (
@@ -22,7 +22,14 @@ CREATE TABLE IF NOT EXISTS genre (
     title VARCHAR(40) NOT NULL
 );
 
+INSERT INTO genre (title)
+VALUES ('Hip-Hop');
 
+INSERT INTO genre (title)
+VALUES ('Rock');
+
+INSERT INTO genre (title)
+VALUES ('Jazz')
 
 CREATE TABLE IF NOT EXISTS album (
     id SERIAL PRIMARY KEY,

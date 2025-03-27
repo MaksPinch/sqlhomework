@@ -155,7 +155,7 @@ CREATE TABLE IF NOT EXISTS album_musician (
     PRIMARY KEY (album_id, musician_id)
 );
 
--- Связи исполнителей с альбомами
+
 INSERT INTO album_musician (album_id, musician_id)
 VALUES (1, 1);
 
@@ -199,3 +199,19 @@ VALUES (4, 17);
 
 INSERT INTO compilation_track (compilation_id, musictrack_id)
 VALUES (4, 18);
+
+
+SELECT title, duration FROM musictrack
+where duration = (SELECT MAX(duration) FROM musictrack);
+
+SELECT title FROM musictrack
+WHERE duration >= 3.5;
+
+SELECT title FROM compilation
+WHERE release_date BETWEEN '2018-01-01' AND '2020-12-31';
+
+SELLECT fullname FROM mucisian
+WHERE fullname NOT LIKE '% %';
+
+SELECT title from musictrack
+WHERE title LIKE 'мой' OR title LIKE'my';

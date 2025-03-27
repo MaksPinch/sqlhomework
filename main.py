@@ -206,7 +206,7 @@ VALUES (4, 18);
 # задание 2
 
 SELECT title, duration FROM musictrack
-where duration = (SELECT MAX(duration) FROM musictrack);
+WHERE duration = (SELECT MAX(duration) FROM musictrack);
 
 SELECT title FROM musictrack
 WHERE duration >= 210;

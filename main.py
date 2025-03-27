@@ -127,7 +127,8 @@ VALUES ('David Bowie Greatest Hits', '2019-09-20');
 
 CREATE TABLE IF NOT EXISTS musician_genre (
     musician_id INTEGER REFERENCES musician(id),
-    genre_id INTEGER REFERENCES genre(id)
+    genre_id INTEGER REFERENCES genre(id),
+    PRIMARY KEY (musicain_id, genre_id)
 );
 
 INSERT INTO musician_genre (musician_id, genre_id)
@@ -140,4 +141,22 @@ INSERT INTO musician_genre (musician_id, genre_id)
 VALUES (3, 3);
 
 INSERT INTO musician_genre (musician_id, genre_id)
-VALUES (4, 2); 
+VALUES (4, 2);
+
+CREATE TABLE IF NOT EXISTS album_musician (
+    album_id INTEGER REFERNCES album(id),
+    musicain_id INTEGER REFERNCES musician(id),
+    PRIMARY KEY (album_id, musician_id)
+);
+
+INSERT INTO album (album_id, musician_id)
+VALUES (1,1);
+
+INSERT INTO musician_album (musician_id, album_id)
+VALUES (2, 2);
+
+INSERT INTO musician_album (musician_id, album_id)
+VALUES (3, 3);
+
+INSERT INTO musician_album (musician_id, album_id)
+VALUES (4, 3);

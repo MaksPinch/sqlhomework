@@ -222,6 +222,7 @@ WHERE fullname NOT LIKE '% %';
 SELECT title
 FROM musictrack
 WHERE title ILIKE 'my%'
+OR title ILIKE '%my'
 OR title ILIKE '%my%'
 OR title ILIKE 'my'
 OR title ILIKE 'мой%'

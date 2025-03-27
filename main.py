@@ -113,4 +113,15 @@ CREATE TABLE IF NOT EXISTS compilation (
     release_date DATE NOT NULL CHECK (release_date >= '2000-01-01')
 );
 
+INSERT INTO compilation (title, release_date)
+VALUES ('The Best of Drake', '2020-01-01');
+
+INSERT INTO compilation (title, release_date)
+VALUES ('The Uzi Collection', '2021-05-15');
+
+INSERT INTO compilation (title, release_date)
+VALUES ('Miles Davis Essentials', '2017-07-12');
+
+INSERT INTO compilation (title, release_date)
+VALUES ('David Bowie Greatest Hits', '2019-09-20');
 

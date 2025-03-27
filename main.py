@@ -234,3 +234,7 @@ SELECT a.title AS name_of_the_album, AVG(m.duration) AS average_duration FROM al
 JOIN musictrack m ON a.id = m.album_id
 GROUP BY a.title;
 
+SELECT DISTINCT c.title AS name_of_the_compilation
+FROM compilation c
+JOIN compilation_track ct ON c.id = ct.compilation_id
+WHERE c.title LIKE '%Drake%';

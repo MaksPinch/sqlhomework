@@ -213,5 +213,5 @@ WHERE release_date BETWEEN '2018-01-01' AND '2020-12-31';
 SELLECT fullname FROM mucisian
 WHERE fullname NOT LIKE '% %';
 
-SELECT title from musictrack
+SELECT title FROM musictrack
 WHERE title LIKE 'мой' OR title LIKE'my';

@@ -1,4 +1,4 @@
-import msilib
+
 
 CREATE TABLE IF NOT EXISTS musician (
     id SERIAL PRIMARY KEY,

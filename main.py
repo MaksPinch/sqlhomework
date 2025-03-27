@@ -1,7 +1,9 @@
+import msilib
+
 CREATE TABLE IF NOT EXISTS musician (
     id SERIAL PRIMARY KEY,
-    fullname VARCHAR(40) NOT NULL,
-    nickname VARCHAR(40) UNIQUE NOT NULL
+    fullname VARCHAR(100) NOT NULL,
+    nickname VARCHAR(100) UNIQUE NOT NULL
 );
 # задание 1
 INSERT INTO musician (fullname, nickname)
@@ -19,7 +21,7 @@ VALUES ('David Robert Jones', 'David Bowie');
 
 CREATE TABLE IF NOT EXISTS genre (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(40) NOT NULL
+    title VARCHAR(100) NOT NULL
 );
 
 INSERT INTO genre (title)
@@ -34,7 +36,7 @@ VALUES ('Jazz');
 
 CREATE TABLE IF NOT EXISTS album (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(40) NOT NULL,
+    title VARCHAR(100) NOT NULL,
     release_date DATE NOT NULL CHECK (release_date >= '2000-01-01')
 );
 
@@ -50,70 +52,71 @@ VALUES ('Blackstar', '2016-01-08');
 
 CREATE TABLE IF NOT EXISTS musictrack (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(30) NOT NULL,
+    title VARCHAR(100) NOT NULL,
     duration INTEGER NOT NULL CHECK (duration > 0),
     album_id INTEGER REFERENCES album(id)
 );
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('God\'s Plan', 3.30, 1);
+VALUES ('God\'s Plan', 198, 1);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('In My Feelings', 3.95, 1);
+VALUES ('In My Feelings', 237, 1);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Nonstop', 3.20, 1);
+VALUES ('Nonstop', 192, 1);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Nice for What', 3.65, 1);
+VALUES ('Nice for What', 219, 1);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Mob Ties', 3.22, 1);
+VALUES ('Mob Ties', 193, 1);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('I\'m Upset', 3.32, 1);
+VALUES ('I\'m Upset', 199, 1);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Baby Pluto', 2.90, 2);
+VALUES ('Baby Pluto', 174, 2);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Silly Watch', 2.88, 2);
+VALUES ('Silly Watch', 173, 2);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Lo Mein', 2.88, 2);
+VALUES ('Lo Mein', 173, 2);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('That Way', 2.83, 2);
+VALUES ('That Way', 170, 2);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('P2', 3.28, 2);
+VALUES ('P2', 196, 2);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('You Better Move', 3.05, 2);
+VALUES ('You Better Move', 183, 2);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Blackstar', 8.00, 3);
+VALUES ('Blackstar', 480, 3);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Lazarus', 4.78, 3);
+VALUES ('Lazarus', 288, 3);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Sue (Or in a Season of Crime)', 4.82, 3);
+VALUES ('Sue (Or in a Season of Crime)', 289, 3);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Girl Loves Me', 3.53, 3);
+VALUES ('Girl Loves Me', 213, 3);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('Dollar Days', 3.47, 3);
+VALUES ('Dollar Days', 208, 3);
 
 INSERT INTO musictrack (title, duration, album_id)
-VALUES ('I Can\'t Give Everything Away', 4.18, 3);
+VALUES ('I Can\'t Give Everything Away', 252, 3);
+
 
 
 
 CREATE TABLE IF NOT EXISTS compilation (
     id SERIAL PRIMARY KEY,
-    title VARCHAR(20) NOT NULL,
+    title VARCHAR(100) NOT NULL,
     release_date DATE NOT NULL CHECK (release_date >= '2000-01-01')
 );
 
@@ -206,16 +209,19 @@ SELECT title, duration FROM musictrack
 where duration = (SELECT MAX(duration) FROM musictrack);
 
 SELECT title FROM musictrack
-WHERE duration >= 3.5;
+WHERE duration >= 210;
 
 SELECT title FROM compilation
 WHERE release_date BETWEEN '2018-01-01' AND '2020-12-31';
 
-SELLECT fullname FROM mucisian
+SELECT fullname FROM musician
 WHERE fullname NOT LIKE '% %';
 
 SELECT title FROM musictrack
-WHERE title LIKE 'мой' OR title LIKE'my';
+WHERE title ILIKE 'my%'
+OR title ILIKE '%my'
+OR title ILIKE '%my%'
+OR title ILIKE 'my'
 
 # задание 3
 
@@ -223,18 +229,32 @@ SELECT g.title, COUNT(mg.musician_id) FROM genre g
 JOIN musician_genre mg ON g.id = mg.genre_id
 GROUP BY g.title;
 
-SELECT a.title AS name_of_the_album, a.release_date, COUNT(m.title) AS number_of_tracks
-FROM album a
-JOIN musictrack m ON a.id = m.album_id
-WHERE a.release_date BETWEEN '2019-01-01' AND '2022-12-31'
-GROUP BY a.title, a.release_date;
+SELECT COUNT(*)
+FROM musictrack m
+JOIN album a ON a.id = m.album_id
+WHERE a.release_date BETWEEN '2019-01-01' AND '2022-12-31';
 
 
 SELECT a.title AS name_of_the_album, AVG(m.duration) AS average_duration FROM album a
 JOIN musictrack m ON a.id = m.album_id
 GROUP BY a.title;
 
+SELECT fullname
+FROM musician
+WHERE id NOT IN (
+    SELECT fullname as name
+    FROM musician m
+    JOIN album_musician am ON m.id = am.musician_id
+    JOIN album a ON am.album_id = a.id
+    WHERE a.release_date BETWEEN '2020-01-01' AND '2020-12-31'
+);
+
 SELECT DISTINCT c.title AS name_of_the_compilation
 FROM compilation c
 JOIN compilation_track ct ON c.id = ct.compilation_id
-WHERE c.title LIKE '%Drake%';
+JOIN musictrack m ON ct.musictrack_id = m.id
+JOIN album a ON m.album_id = a.id
+JOIN album_musician am ON a.id = am.album_id
+JOIN musician ms ON am.musician_id = ms.id
+WHERE ms.fullname = 'Drake';
+

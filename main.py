@@ -37,7 +37,14 @@ CREATE TABLE IF NOT EXISTS album (
     release_date DATE NOT NULL CHECK (release_date >= '2000-01-01')
 );
 
+INSERT INTO album (title, release_date)
+VALUES ('Scorpion', '2018-06-29');
 
+INSERT INTO album (title, release_date)
+VALUES ('Eternal Atake', '2020-03-06');
+
+INSERT INTO album (title, release_date)
+VALUES ('Blackstar', '2016-01-08');
 
 CREATE TABLE IF NOT EXISTS musictrack (
     id SERIAL PRIMARY KEY,
